@@ -51,6 +51,7 @@
 
 (include-book "centaur/bitops/ihs-extensions" :dir :system)
 (local (include-book "centaur/bitops/signed-byte-p" :dir :system))
+(local (include-book "tools/mv-nth-better" :dir :system))
 
 ;; ======================================================================
 
@@ -5859,7 +5860,8 @@
                        '(effects-loop-rules
                          nc-algo
                          loop-effects-hint)
-                       (theory 'minimal-theory)))))
+                       (theory 'minimal-theory))
+           :expand ((:free (word-state) (loop-effects-hint word-state (offset x86) (input x86) x86))))))
 
 
 (defthm effects-loop-nl
@@ -5880,7 +5882,8 @@
                        '(effects-loop-rules
                          nl-algo
                          loop-effects-hint)
-                       (theory 'minimal-theory)))))
+                       (theory 'minimal-theory))
+           :expand ((:free (word-state) (loop-effects-hint word-state (offset x86) (input x86) x86))))))
 
 (encapsulate
  ()
@@ -5941,7 +5944,9 @@
                        '(effects-loop-rules
                          nw-algo nw-hint
                          loop-effects-hint)
-                       (theory 'minimal-theory)))))
+                       (theory 'minimal-theory))
+           :expand ((:free (word-state) (loop-effects-hint word-state (offset x86) (input x86) x86))
+                    (:free (word-state) (nw-algo (offset x86) (input x86) word-state (nw x86 x86)))))))
 
 ;;**********************************************************************
 ;; Loop behavior in terms of nc, nw, and nl
@@ -6266,7 +6271,8 @@
                          rgfi-is-i64p
                          loop-effects-hint
                          (len))
-                       (theory 'minimal-theory)))
+                       (theory 'minimal-theory))
+           :expand ((:free (word-state) (loop-effects-hint word-state (offset x86) (input x86) x86))))
           ("Subgoal *1/3"
            :in-theory (union-theories
                        '(env-assumptions
@@ -6343,7 +6349,8 @@
                          rgfi-is-i64p
                          loop-effects-hint
                          (len))
-                       (theory 'minimal-theory)))
+                       (theory 'minimal-theory))
+           :expand ((:free (word-state) (loop-effects-hint word-state (offset x86) (input x86) x86))))
           ("Subgoal *1/3"
            :in-theory (union-theories
                        '(env-assumptions
@@ -6730,7 +6737,7 @@
                                 (loop-effects-hint old-word-state offset str-bytes x86)))
                   (mv-nth 1 (rb n-mem mem-addr r-x x86))))
   :hints (("Goal"
-           :expand (loop-effects-hint (word-state x86 x86) (offset x86) (input x86) x86)
+           :expand ((:free (word-state) (loop-effects-hint word-state (offset x86) (input x86) x86)))
            :in-theory (union-theories
                        '(memory-analysis-effects-to-gc-no-call
                          memory-analysis-effects-call-gc

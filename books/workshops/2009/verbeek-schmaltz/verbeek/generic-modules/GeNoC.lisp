@@ -2211,6 +2211,7 @@
          m-dests-to-missives-compute-missives-extract-sublst-use-instance
          (ntkstate (stategenerator params params2))))))
 
+(local (include-book "tools/mv-nth-better" :dir :system))
 
 (defthm genoc-is-correct            ;; ok
   (let ((nodeset (nodesetgenerator params)))

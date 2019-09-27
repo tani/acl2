@@ -57,6 +57,7 @@
 (local (include-book "dispatch-creator"))
 (local (include-book "centaur/bitops/ihs-extensions" :dir :system))
 (local (include-book "centaur/bitops/signed-byte-p" :dir :system))
+(local (include-book "tools/mv-nth-better" :dir :system))
 
 (local (in-theory (e/d ()
                        (app-view-rml08-no-error

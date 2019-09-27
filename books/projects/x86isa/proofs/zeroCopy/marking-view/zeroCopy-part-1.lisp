@@ -39,6 +39,7 @@
 (in-package "X86ISA")
 
 (include-book "zeroCopy-init")
+(local (include-book "tools/mv-nth-better" :dir :system))
 
 ;; ======================================================================
 
