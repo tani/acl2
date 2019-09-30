@@ -5890,7 +5890,11 @@ to clear out the wires or instances; just start over with a new elab-mod.</p>")
                    (:instance elab-mod-wire-find-inst-correct2
                     (elab-mod (nth modidx (nth *moddb->modsi* moddb)))
                     (wire wireidx)))
-             :do-not-induct t))))
+             :do-not-induct t)))
+
+  ;; for fixequiv hooks
+  (local (in-theory (e/d (acl2::mv-nth-cons-meta)
+                         (acl2::mv-nth-of-cons)))))
 
 (define moddb-path->wireidx/decl ((path path-p)
                                   (modidx natp)
@@ -7540,7 +7544,9 @@ checked to see if it is a valid bitselect and returned as a separate value."
     :hints ((and stable-under-simplificationp
                  '(:expand
                    ((:free (modidx) (svex-modinsts->initial-aliases n ninsts modidx offset moddb lhsarr))
-                    (:free (moddb) (svex-modinsts->initial-aliases n ninsts modidx offset moddb lhsarr)))))))
+                    (:free (moddb) (svex-modinsts->initial-aliases n ninsts modidx offset moddb lhsarr))
+                    (:free (moddb) (svex-mod->initial-aliases modidx offset moddb lhsarr))
+                    (:free (moddb) (svex-modinst->initial-aliases n modidx offset moddb lhsarr)))))))
 
   (defthm svex-modinsts->initial-aliases-norm
     (implies (syntaxp (not (equal ninsts ''nil)))

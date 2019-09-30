@@ -12,7 +12,7 @@
 (include-book "ordinals/lexicographic-ordering" :dir :system)
 (include-book "../../../generic-modules/GeNoC")
 (include-book "sets")
-(local (include-book "tools/mv-nth-better" :dir :system))
+(local (include-book "tools/mv-nth" :dir :system))
 
 ;;-----------------------------
 ;; Defintion of GeNoC

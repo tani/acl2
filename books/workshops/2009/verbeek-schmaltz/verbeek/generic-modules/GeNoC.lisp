@@ -15,6 +15,7 @@
 (include-book "GeNoC-departure")
 (include-book "GeNoC-simulation")
 (in-theory (disable mv-nth))
+(local (include-book "tools/mv-nth" :dir :system))
 
 (defun genoc_t (m nodeset measure trlst accup time ntkstate order)
   ;; the composition of routing and scheduling is built by function genoc_t.
@@ -2210,8 +2211,6 @@
         (:instance
          m-dests-to-missives-compute-missives-extract-sublst-use-instance
          (ntkstate (stategenerator params params2))))))
-
-(local (include-book "tools/mv-nth-better" :dir :system))
 
 (defthm genoc-is-correct            ;; ok
   (let ((nodeset (nodesetgenerator params)))

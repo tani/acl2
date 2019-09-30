@@ -2268,8 +2268,9 @@
  (encapsulate
    ()
    (local
-    (in-theory (e/d* ()
-                     ((:definition member-equal)
+    (in-theory (e/d* (acl2::mv-nth-cons-meta)
+                     (acl2::mv-nth-of-cons
+                      (:definition member-equal)
                       (:rewrite mv-nth-1-las-to-pas-subset-p-disjoint-from-other-p-addrs)
                       (:rewrite
                        infer-disjointness-with-all-xlation-governing-entries-paddrs-from-gather-all-paging-structure-qword-addresses-1)

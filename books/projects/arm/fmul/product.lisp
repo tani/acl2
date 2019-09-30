@@ -519,7 +519,7 @@
            :in-theory '(t2pp0s t1pp0c t2pp1s t1pp1c t2pp2s t1pp2c t2pp3s t1pp3c t2pp4s t1pp4c t2pp5s t1pp5c t2pp6s t1pp6c
 	                t2pp7s t1pp7c t2pp8s t1pp8c t3pp0s t2pp0c t3pp1s t2pp1c t3pp2s t2pp2c t4pp0s t3pp0c t4pp1s t3pp1c t4pp2s
 			t3pp2c t4pp3s t3pp3c t5pp0s t4pp0c t5pp1s t4pp1c t4pp4s t4pp2c t6pp0s t5pp0c t6pp1s t5pp1c t7pp0s t6pp0c
-			t6pp2s t6pp1c t8pp0s t7pp0c t9pp0s t7pp1c t9pp1s t9pp0c ppa* ppb* compress compress3to2 ppa ppb))))
+			t6pp2s t6pp1c t8pp0s t7pp0c t9pp0s t7pp1c t9pp1s t9pp0c ppa* ppb* compress compress3to2 ppa ppb acl2::mv-nth-of-cons (binary-+) (zp)))))
 
 (local-in-theory (disable (t2pp0s) (t1pp0c) (t2pp1s) (t1pp1c) (t2pp2s) (t1pp2c) (t2pp3s) (t1pp3c) (t2pp4s) (t1pp4c) (t2pp5s) (t1pp5c)
                     (t2pp6s) (t1pp6c) (t2pp7s) (t1pp7c) (t2pp8s) (t1pp8c) (t3pp0s) (t2pp0c) (t3pp1s) (t2pp1c) (t3pp2s) (t2pp2c)
